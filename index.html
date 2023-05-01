@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お天気アプリ</title>
+    <title>外国情報アプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>天気アプリ</h1>
-    <div class="select">
-        <select id="city-select">
-            <option value="Fukuoka">福岡</option>
-            <option value="Kasuga">春日</option>
-            <option value="Tokyo">東京</option>
-            <option value="Osaka">大阪</option>
-            <option value="Nagoya">名古屋</option>
+    <h1>外国情報アプリ</h1>
+    <div class="main">
+        <p>調べたい言語を選択してください</p>
+        <label>言語：</label>
+        <select id="select">
+            <option value="en">英語</option>
+            <option value="fr">フランス語</option>
+            <option value="de">ドイツ語</option>
+            <option value="es">スペイン語</option>
+            <option value="ja">日本語</option>
+            <option value="it">イタリア語</option>
+            <option value="ko">韓国語</option>
+            <option value="zh">中国語</option>
+            <option value="ru">ロシア語</option>
         </select>
-
-        <div id="weather-box"></div>
+        <br><br>
+        <button onclick="Info()">情報を取得する</button>
+        <div id="info"></div>
     </div>
-
     <script src="js/main.js"></script>
 </body>
 </html>

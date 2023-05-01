@@ -1,39 +1,38 @@
 "use strict"
 
-const api_key = "50d4c65fa058ccffec4d18694c037a13";
-
-const citySelect =document.getElementById("city-select");
-
-citySelect.addEventListener("change", () => {
-    const city = citySelect.value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
+function Info() {
+    const Code = document.getElementById("select").value;
+    const url = `https://restcountries.com/v2/lang/${Code}?fields=name,capital,population,flag,area,currencies,languages,timezones`;
 
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        const weather = data.weather[0].main;
-        const description = data.weather[0].description;
-        const temperature = data.main.temp;
-        const humidity = data.main.humidity;
-        const windspeed = data.wind.speed;
-        const windDirection =data.wind.deg;
-        const pressure =data.main.pressure;
-        const maxTemperature =data.main.temp_max;
-        const minTemperature =data.main.temp_min;
+        const i = Math.floor(Math.random() * data.length);
+        const country = data[i];
+        const name = country.name;
+        const capital = country.capital;
+        const population = country.population;
+        const flag = country.flag;
+        const area = country.area;
+        const currency = country.currencies[0]?.name ?? '';
+        const language = country.languages[0]?.name ?? '';
+        const timezones = country.timezones.join(", ");
 
-        const weatherBox = document.getElementById("weather-box");
-        weatherBox.innerHTML =`
-          <h3>${city}の天気情報</h3>
-          <p>天気: ${weather} (${description})</p>
-          <p>気温: ${temperature}℃ </p>
-          <p>湿度: ${humidity}%</p>
-          <p>風速: ${windspeed}m/s</p>
-          <p>風向: ${windDirection}°</p>
-          <p>気圧: ${pressure}</p>
-          <p>最高気温: ${maxTemperature}℃</p>
-          <p>最低気温: ${minTemperature}℃</p>
-          `;
+        const countryDiv = document.getElementById("info");
+        countryDiv.innerHTML =`
+        <br>
+        <h2>${name}</h2>
+        <p>首都: ${capital}</p>
+        <p>人口: ${population}</p>
+        <p>面積: ${area}</p>
+        <p>通貨: ${currency}</p>
+        <p>公用語: ${language}</p>
+        <p>標準時: ${timezones}</p>
+        <br>
+        <img src="${flag}" alt="${name}の国旗" width="100">
+        `
+        ;
     })
     .catch(error => console.error(error));
-});
-
+    
+}

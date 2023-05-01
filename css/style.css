@@ -5,34 +5,31 @@
 
 h1{
     font-size: 20px;
-    background-color: aquamarine;
+    background-color:slategray;
     width: 200px;
     height: 50px;
     text-align: center;
     line-height: 50px;
     margin: 10px auto;
-    border: 1px solid royalblue;
+    border: 1px solid red;
     border-radius: 10px;
 }
 
-.select{
-    background-color: brown;
+.main{
+    background-color: violet;
     width: 200px;
     height: auto;
     text-align: center;
     margin: 0 auto;
-    border: 1px solid darkorange;
+    border: 1px solid red;
     border-radius: 10px;
 }
 
-#weather-box h3{
-    color: fuchsia;
-    font-size: 18px;
+#info h2{
+    font-size: 20px;
 }
 
-#weather-box p{
+#info p{
     font-weight: bold;
-    font-size: 16px;
-    text-align: left;
-    padding: 0 0 0 10px;
+    font-size: 14px;
 }
