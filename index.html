@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>外国情報アプリ</title>
+    <title>箇条書きノート</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>外国情報アプリ</h1>
-    <div class="main">
-        <p>調べたい言語を選択してください</p>
-        <label>言語：</label>
-        <select id="select">
-            <option value="en">英語</option>
-            <option value="fr">フランス語</option>
-            <option value="de">ドイツ語</option>
-            <option value="es">スペイン語</option>
-            <option value="ja">日本語</option>
-            <option value="it">イタリア語</option>
-            <option value="ko">韓国語</option>
-            <option value="zh">中国語</option>
-            <option value="ru">ロシア語</option>
-        </select>
-        <br><br>
-        <button onclick="Info()">情報を取得する</button>
-        <div id="info"></div>
+    <h1>箇条書きノート</h1>
+
+    <div class="inDiv">
+        <h4>文字入力エリア</h4>
+        <textarea id="in" placeholder="全角で何でも入力してね！"></textarea>
+        <br>
+        <button onclick="S()">結果出力</button>
+        <button onclick="C()">出力削除</button>
+        <button onclick="P()">PDFに保存</button>
+    </div>
+    <br>
+    <div class="outDiv">
+        <h4>文字出力エリア</h4>
+        <ol id="out">
+            
+        </ol>
     </div>
     <script src="js/main.js"></script>
 </body>
