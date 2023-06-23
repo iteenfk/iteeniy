@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英単語帳作成アプリ</title>
+    <title>ボリュームコントロール</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>iteen 英単語帳</h1>
-    <br>
     <div class="main">
-        <label>単語:
-            <input type="text" id="in1">
-        </label>
-        <label>意味:
-            <input type="text" id="in2">
-        </label>
-          <br><br>
-          <button onclick="A()">追加</button>
-          <button onclick="C()">クリア</button>
-          <button onclick="P()">印刷</button>
+        <h1>iTeen 音楽player</h1>
+        <audio id="player" src="Tobu & Wholm - Better Days.mp3"></audio>
+
+        <div class="btn">
+            <button onclick="play()">再生</button>
+            <button onclick="pause()">一時停止</button>
+            <button onclick="stop()">停止</button>
+        </div>
+        <br>
+        <div class="in">
+            <input type="range" id="slider" oninput="volume()" min="0" max="100" value="50">
+            <p id="vol">50%</p>
+        </div>
     </div>
-    <br>
-    <ol id="out">
-    </ol>
+
     <script src="js/main.js"></script>
+    
 </body>
 </html>
