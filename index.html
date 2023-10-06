@@ -1,75 +1,53 @@
 <html>
 <head>
-<title>９月２２日</title>
+<title>10-6</title>
 <style>
-.box_c{
-width:300px;
-height:300px;
-background-color:yellow;
-border:1px solid black;
-border-radius:10px;
-overflow:hidden;
+.x_c{
+border:5px dotted green;
+text-align:center;
+width:600px;
 margin:auto;
-}
-.text_c{
-text-align:center;
-margin:300px 0;
-}
-.btn{
-text-align:center;
-margin-top:20px;
+border-radius:10px;
+font-size:30px;
+font-weight:bold;
 }
 </style>
 </head>
 <body>
-<div class="box_c" id="box_id">
-<p class="text_c">
-ああああああああああ
-<br>
-いいいいいいいいいい
-<br>
-うううううううううう
-<br>
-ああああああああああ
-<br>
-いいいいいいいいいい
-<br>
-うううううううううう
-<br>
-</p>
-</div>
-<div class="btn">
-<button onclick="Start()">開始</button>
-<button onclick="Stop()">停止</button>
+<audio src="alert.mp3" id="alert_id"></audio>
+<div class="x_c">
+<p id="out">表示</p>
+<button onclick="start()">開始</button>
+<button onclick="stop()">停止</button>
 </div>
 <script>
-const box = document.getElementById("box_id");
-
-let scroll = 0;
-
 let t = null;
 
-function Start(){
-clearInterval(t)
-t = setInterval(auto,50);
-}
+function start(){clearInterval(t);
+t = setInterval(B, 1000);}
+function stop(){clearInterval(t)}
+function B(){
+const now = new Date();
 
-function Stop(){
-clearInterval(t)
-}
+const year = now.getFullYear();
+const month = now.getMonth()+1;
+const date = now.getDate();
+let day = now.getDay();
+const hours = now.getHours();
+const minutes = now.getMinutes();
+const seconds = now.getSeconds();
+if (day == 0){day = "日";}
+if (day == 1){day = "月";}
+if (day == 2){day = "火";}
+if (day == 3){day = "水";}
+if (day == 4){day = "木";}
+if (day == 5){day = "金";}
+if (day == 6){day = "土";}
+document.getElementById("out").textContent =`${year}年${month}月${date}日(${day})${hours}時${minutes}分${seconds}秒`;
 
- 
-
-function auto(){
-box.scrollTop = scroll;
-if (box.scrollTop < box.scrollHeight - box.clientHeight){
-scroll = scroll +1;}
-else{
-scroll =0;
-box.scrollTop =0;
+const audio = document.getElementById("alert_id");
+if (hours == 19 && minutes == 6){audio.play();}
 }
-}
-
 </script>
 </body>
 </html>
