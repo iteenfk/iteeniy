@@ -1,53 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<title>10-6</title>
-<style>
-.x_c{
-border:5px dotted green;
-text-align:center;
-width:600px;
-margin:auto;
-border-radius:10px;
-font-size:30px;
-font-weight:bold;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-20</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        h1{
+            font-size: 25px;
+            text-align: center;
+        }
+        .dsp_c{
+            border: 1px solid red;
+            text-align: center;
+            width: 400px;
+            margin: auto;
+            padding: 10px;
+        }
+        #output_id{
+            display: inline-block;
+
+        }
+        .output_c{
+            text-align: center;
+            margin: 10px;
+        }
+        #size_id,#fore_id,#back_id{
+            width: 50px;
+        }
+    </style>
 </head>
 <body>
-<audio src="alert.mp3" id="alert_id"></audio>
-<div class="x_c">
-<p id="out">表示</p>
-<button onclick="start()">開始</button>
-<button onclick="stop()">停止</button>
-</div>
-<script>
-let t = null;
-
-function start(){clearInterval(t);
-t = setInterval(B, 1000);}
-function stop(){clearInterval(t)}
-function B(){
-const now = new Date();
-
-const year = now.getFullYear();
-const month = now.getMonth()+1;
-const date = now.getDate();
-let day = now.getDay();
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const seconds = now.getSeconds();
-if (day == 0){day = "日";}
-if (day == 1){day = "月";}
-if (day == 2){day = "火";}
-if (day == 3){day = "水";}
-if (day == 4){day = "木";}
-if (day == 5){day = "金";}
-if (day == 6){day = "土";}
-document.getElementById("out").textContent =`${year}年${month}月${date}日(${day})${hours}時${minutes}分${seconds}秒`;
-
-const audio = document.getElementById("alert_id");
-if (hours == 19 && minutes == 6){audio.play();}
-}
-</script>
+    <h1>QRCodeを作成</h1>
+    <div class="dsp_c">
+        url: <input type="text" id="url_id" value="https;//google.co.jp"><br>
+        サイズ: <input type="text" id="size_id"><br>
+        前景色: <input type="text" id="fore_id"><br>
+        背景色: <input type="text" id="back_id"><br><br>
+        <button onclick="btn()">作成</button>
+    </div>
+    <div class="output_c">
+        <p id="output_id"></p>
+    </div>
+    <script>
+        function btn(){
+        const output = document.getElementById("output_id");
+        const url = document.getElementById("url_id").value;
+        const size = document.getElementById("size_id").value;
+        const fore = document.getElementById("fore_id").value;
+        const back = document.getElementById("back_id").value;
+        if(url != "" && size != "" && fore != "" && back != ""){
+            const opt = {text:url,
+                         width:size,
+                         height:size,
+                         colorDark:fore,
+                         colorLight:back,}
+            new QRCode(output,opt);
+            document.getElementById("url_id").value = ""
+            document.getElementById("size_id").value = ""
+            document.getElementById("fore_id").value = ""
+            document.getElementById("back_id").value = ""}
+        } 
+    </script>
+    
 </body>
 </html>
